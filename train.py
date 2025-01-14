@@ -150,15 +150,12 @@ if torch.cuda.is_available():
     torch.cuda.manual_seed(seed)
 random.seed(seed)
 
-n_party_per_round = int(args.n_parties * args.sample_fraction)
+
 party_list = [i for i in range(args.n_parties)]
 party_list_rounds = []
-if n_party_per_round != args.n_parties:
-    for i in range(args.comm_round):
-        party_list_rounds.append(random.sample(party_list, n_party_per_round))
-else:
-    for i in range(args.comm_round):
-        party_list_rounds.append(party_list)
+
+for i in range(args.comm_round):
+    party_list_rounds.append(party_list)
 
 benign_client_list = random.sample(party_list, int(args.n_parties * (1-args.attack_ratio)))
 benign_client_list.sort()
@@ -204,8 +201,6 @@ for net in local_models:
 cluster_model_vectors = {}
 for round in range(cfg["comm_round"]):
     party_list_this_round = party_list_rounds[round]
-    if args.sample_fraction < 1.0:
-        print(f'>> Clients in this round : {party_list_this_round}')
     nets_this_round = {k: local_models[k] for k in party_list_this_round}
     teachers_this_round = {k: local_models_teacher[k] for k in party_list_this_round}
 
