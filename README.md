@@ -1,2 +1,2 @@
-# MTSD-CF
-Facial expression recognition based on multi-task self-distillation with coarse-fine labels
+# FedKDDC
+Knowledge-Distillation based Personalized Federated Learning with Distribution Constraints
