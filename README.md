@@ -3,10 +3,10 @@ Knowledge-Distillation based Personalized Federated Learning with Distribution C
 
 ## Experiments
 Our experiments are implemented with open-source PyTorch 1.13.1, on an NVIDIA GeForce RTX 4090 platform. 
-The results are shown in Tables 1-7.
 
 ### Results of Dirichlet Distribution: 
-Dirichlet distribution is a typical data splitting principle in FL, which effectively mimics the heterogeneity of data in real applications. We conduct the experiments under Dirichlet Distribution data partition to compare the performance among the state-of-the-arts methods.
+Dirichlet distribution is a typical data splitting principle in FL, which effectively mimics the heterogeneity of data in real applications. We conduct the experiments under Dirichlet distribution data partition to compare the performance among the state-of-the-arts methods.
+
 Table 1: Accuracy (%) comparisons of image classification task on CIFAR-10 and CIFAR-100 under data partitioning of Dirichlet distribution. 
 
  Method  | CIFAR-10  | CIFAR-100
@@ -61,9 +61,10 @@ CFL | 79.40 | pFedGraph | 80.56
 Per-FedAvg | 80.16 | FedKDDC | 85.50±0.09
 pFedMe | 58.91 | | 
 
-### Table 4:
-Accuracy (%) comparisons of image classification task on CIFAR-10 and CIFAR-100 under data partitioning of pathological distribution.
+### Results of Pathological distribution distribution:
+Consider the scenario where some categories of data are missing on the clients, we also split the datasets based on pathological distribution and conduct the experiments
 
+Table 2: Accuracy (%) comparisons of image classification task on CIFAR-10 and CIFAR-100 under data partitioning of pathological distribution.
  Method  | CIFAR-10  | CIFAR-100
 | ---- | ----- | ------  
 | FedAvg | 66.19 | 26.23 
