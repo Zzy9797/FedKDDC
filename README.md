@@ -115,4 +115,8 @@ kNN-Per | 67.01 | 31.04
 pFedGraph | 67.37 | 31.16 
 FedKDDC | 67.55±0.09 | 33.65±0.10 
 
+**Acknowledgments**
+Our work is based on the following work, thanks for the code:
+
+https://github.com/MediaBrain-SJTU/pFedGraph
 
