@@ -4,7 +4,7 @@ Knowledge-Distillation based Personalized Federated Learning with Distribution C
 ## Experiments
 Our experiments are implemented with open-source PyTorch 1.13.1, on an NVIDIA GeForce RTX 4090 platform. 
 
-### Results of Dirichlet Distribution: 
+**Results of Dirichlet Distribution**: 
 Dirichlet distribution is a typical data splitting principle in FL, which effectively mimics the heterogeneity of data in real applications. We conduct the experiments under Dirichlet distribution data partition to compare the performance among the state-of-the-arts methods.
 
 Table 1: Accuracy (%) comparisons of image classification task on CIFAR-10 and CIFAR-100 under data partitioning of Dirichlet distribution. 
@@ -60,7 +60,7 @@ CFL | 79.40 | pFedGraph | 80.56
 Per-FedAvg | 80.16 | FedKDDC | 85.50±0.09
 pFedMe | 58.91 | | 
 
-### Results of Pathological distribution distribution:
+**Results of Pathological distribution distribution**:
 Consider the scenario where some categories of data are missing on the clients, we also split the datasets based on pathological distribution and conduct the experiments
 
 Table 4: Accuracy (%) comparisons of image classification task on CIFAR-10 and CIFAR-100 under data partitioning of pathological distribution.
@@ -93,7 +93,7 @@ CFL | 88.61 | pFedGraph | 89.04
 Per-FedAvg | 86.92 | FedKDDC | 92.16±0.15 
 pFedMe | 64.16 | | 
 
-### Results of homogeneous data partition:
+**Results of homogeneous data partition**:
 When data is homogeneous, excessive personalization can sometimes affect model performance. To validate the effectiveness of proposed FedKDDC under data homogeneity, we conduct the experiments on CIFAR-10 and CIFAR-100 under independent and identically distributed data partition.
 
 Table 6: Accuracy (%) comparisons of image classification task on the datasets CIFAR-10 and CIFAR-100 under homogeneous data partitioning
@@ -115,7 +115,7 @@ kNN-Per | 67.01 | 31.04
 pFedGraph | 67.37 | 31.16 
 FedKDDC | 67.55±0.09 | 33.65±0.10 
 
-**Acknowledgments**
+## Acknowledgments
 Our work is based on the following work, thanks for the code:
 
 https://github.com/MediaBrain-SJTU/pFedGraph
