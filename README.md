@@ -61,7 +61,7 @@ Per-FedAvg | 80.16 | FedKDDC | 85.50±0.09
 pFedMe | 58.91 | | 
 
 **Results of Pathological distribution distribution**:
-Consider the scenario where some categories of data are missing on the clients, we also split the datasets based on pathological distribution and conduct the experiments
+Consider the scenario where some categories of data are missing on the clients, we also split the datasets based on pathological distribution and conduct the experiments.
 
 Table 4: Accuracy (%) comparisons of image classification task on CIFAR-10 and CIFAR-100 under data partitioning of pathological distribution.
  Method  | CIFAR-10  | CIFAR-100
@@ -96,7 +96,7 @@ pFedMe | 64.16 | |
 **Results of homogeneous data partition**:
 When data is homogeneous, excessive personalization can sometimes affect model performance. To validate the effectiveness of proposed FedKDDC under data homogeneity, we conduct the experiments on CIFAR-10 and CIFAR-100 under independent and identically distributed data partition.
 
-Table 6: Accuracy (%) comparisons of image classification task on the datasets CIFAR-10 and CIFAR-100 under homogeneous data partitioning
+Table 6: Accuracy (%) comparisons of image classification task on the datasets CIFAR-10 and CIFAR-100 under homogeneous data partitioning.
  Method  | CIFAR-10  | CIFAR-100
  ---- | ----- | ------  
 FedAvg | 67.12 | 31.10 
