@@ -28,9 +28,8 @@ Table 1: Accuracy (%) comparisons of image classification task on CIFAR-10 and C
  pFedGraph  | 84.28 | 51.63
  FedKDDC  | 85.69±0.04 | 54.33±0.22
 
-### Table 2:
-Accuracy (%) comparisons of image classification task on SVHN and Fashion-MNIST under data partitioning of Dirichlet distribution. 
 
+Table 2: Accuracy (%) comparisons of image classification task on SVHN and Fashion-MNIST under data partitioning of Dirichlet distribution. 
 | Method | SVHN | Fashion-MNIST |
 | --- | --- | --- |
 | FedAvg | 85.86 | 84.51 |
@@ -49,8 +48,8 @@ Accuracy (%) comparisons of image classification task on SVHN and Fashion-MNIST 
 | pFedGraph | 89.59 | 96.46 |
 | FedKDDC | 90.66±0.15 | 96.57±0.05 |
 
-### Table 3:
-Accuracy (%) comparisons of text classification task on the dataset Yahoo! Answers under data partitioning of Dirichlet distribution.
+
+Table 3: Accuracy (%) comparisons of text classification task on the dataset Yahoo! Answers under data partitioning of Dirichlet distribution.
 Method | Accuracy | Method | Accuracy 
 | --- | --- | --- | --- |
 FedAvg | 51.99 | FedAMP | 64.26
@@ -64,7 +63,7 @@ pFedMe | 58.91 | |
 ### Results of Pathological distribution distribution:
 Consider the scenario where some categories of data are missing on the clients, we also split the datasets based on pathological distribution and conduct the experiments
 
-Table 2: Accuracy (%) comparisons of image classification task on CIFAR-10 and CIFAR-100 under data partitioning of pathological distribution.
+Table 4: Accuracy (%) comparisons of image classification task on CIFAR-10 and CIFAR-100 under data partitioning of pathological distribution.
  Method  | CIFAR-10  | CIFAR-100
 | ---- | ----- | ------  
 | FedAvg | 66.19 | 26.23 
@@ -83,10 +82,7 @@ Table 2: Accuracy (%) comparisons of image classification task on CIFAR-10 and C
 | pFedGraph | 92.74 | 56.79 
 | FedKDDC | 92.84±0.09 | 58.82±0.12
 
-### Table 5:
-Accuracy (%) comparisons of text classification task on the dataset Yahoo! Answers under data partitioning of pathological distribution.
-
-
+Table 5: Accuracy (%) comparisons of text classification task on the dataset Yahoo! Answers under data partitioning of pathological distribution.
 Method | Accuracy | Method | Accuracy 
 | --- | --- | --- | --- |
 FedAvg | 63.14 | FedAMP | 76.85 
@@ -97,9 +93,10 @@ CFL | 88.61 | pFedGraph | 89.04
 Per-FedAvg | 86.92 | FedKDDC | 92.16±0.15 
 pFedMe | 64.16 | | 
 
-### Table 6:
-Accuracy (%) comparisons of image classification task on the datasets CIFAR-10 and CIFAR-100 under homogeneous data partitioning.
+### Results of homogeneous data partition:
+When data is homogeneous, excessive personalization can sometimes affect model performance. To validate the effectiveness of proposed FedKDDC under data homogeneity, we conduct the experiments on CIFAR-10 and CIFAR-100 under independent and identically distributed data partition.
 
+Table 6: Accuracy (%) comparisons of image classification task on the datasets CIFAR-10 and CIFAR-100 under homogeneous data partitioning
  Method  | CIFAR-10  | CIFAR-100
  ---- | ----- | ------  
 FedAvg | 67.12 | 31.10 
@@ -118,16 +115,4 @@ kNN-Per | 67.01 | 31.04
 pFedGraph | 67.37 | 31.16 
 FedKDDC | 67.55±0.09 | 33.65±0.10 
 
-### Table 7:
-Accuracy comparisons on CIFAR-10 under poisoning attacks. The data partition follows the Dirichlet distribution. The attack ratio is 0.2.
 
-
-Method | Accuracy | Method | Accuracy 
-| --- | --- | --- | --- |
-FedAvg | 39.29  | FedAMP | 75.31 
-FedAvg-FT | 67.85 | Ditto | 58.38 
-FedProx | 39.72 | FedRep | 68.00 
-FedProx-FT | 67.18 | FedRoD | 68.58 
-CFL | 67.45 | pFedGraph | 82.39 
-Per-FedAvg | 67.57 | FedKDDCm | 82.83 
-pFedMe | 64.45 | | 
