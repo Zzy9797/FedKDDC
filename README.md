@@ -6,7 +6,8 @@ Knowledge-Distillation based Personalized Federated Learning with Distribution C
 - train.py: main code of the algorithm
 - utils.py: some utilities of the algorithm
 - test.py: evalution indicators
-- prepare_data.py、cvdataset.py、nlp_dataset.py
+- prepare_data.py、data_partition、cvdataset.py、nlpdataset.py：get loaders
+- attacks.py: attack functions
   
 ## Experiments
 Our experiments are implemented with open-source PyTorch 1.13.1, on an NVIDIA GeForce RTX 4090 platform. 
