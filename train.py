@@ -20,7 +20,7 @@ import torch.nn.functional as F
 def local_train_pfedgraph(args, round, nets_this_round,teachers_this_round, cluster_models, train_local_dls, val_local_dls, test_dl, data_distributions, best_val_acc_list, best_test_acc_list, benign_client_list):
         
     print('training student')   #train personalized models
-    for net_id, net in nets_this_round.items():
+    for net_id, net in nets_this_round.items():   #each local training
 
         teacher=teachers_this_round[net_id]
         train_local_dl = train_local_dls[net_id]
@@ -128,18 +128,10 @@ def local_train_pfedgraph(args, round, nets_this_round,teachers_this_round, clus
         teacher.to('cpu')
     return np.array(best_test_acc_list)[np.array(benign_client_list)].mean()
 
-now = int(time.time())
+now = int(time.time())   
 timeArray = time.localtime(now)
-new_time=[]
-for i in range(6):
-    if i==3:
-        new_time.append(timeArray[i]+8)
-    else:
-        new_time.append(timeArray[i])
-if new_time[3]>=24:
-    new_time[3]-=24
-    new_time[2]+=1
-timestr="{}-{}-{}_{}:{}:{}".format(new_time[0],new_time[1],new_time[2],new_time[3],new_time[4],new_time[5])
+new_time=timeArry
+timestr="{}-{}-{}_{}:{}:{}".format(new_time[0],new_time[1],new_time[2],new_time[3],new_time[4],new_time[5]) #timestamp
 print(timestr)
 args, cfg = get_args()
 print(args)
@@ -157,12 +149,12 @@ party_list_rounds = []
 for i in range(args.comm_round):
     party_list_rounds.append(party_list)
 
-benign_client_list = random.sample(party_list, int(args.n_parties * (1-args.attack_ratio)))
+benign_client_list = random.sample(party_list, int(args.n_parties * (1-args.attack_ratio)))  #set benign clients
 benign_client_list.sort()
 print(f'>> -------- Benign clients: {benign_client_list} --------')
 
 train_local_dls, val_local_dls, test_dl, net_dataidx_map, traindata_cls_counts, data_distributions = get_dataloader(args)   #get data partition
-
+#set models
 if args.dataset == 'cifar10':
     model = simplecnn
 elif args.dataset == 'cifar100':
@@ -183,7 +175,7 @@ local_models = []
 local_models_teacher = []
 best_val_acc_list, best_test_acc_list = [],[]
 dw = []
-for i in range(cfg['client_num']):
+for i in range(cfg['client_num']):    #initilization 
     local_models.append(model(cfg['classes_size']))
     local_models_teacher.append(model(cfg['classes_size']))
     dw.append({key : torch.zeros_like(value) for key, value in local_models[i].named_parameters()})
@@ -191,7 +183,7 @@ for i in range(cfg['client_num']):
     best_test_acc_list.append(0)
 
 graph_matrix = torch.ones(len(local_models), len(local_models)) / (len(local_models)-1)                 
-graph_matrix[range(len(local_models)), range(len(local_models))] = 0
+graph_matrix[range(len(local_models)), range(len(local_models))] = 0   #initialze aggregation weights
 
 for net in local_models:
     net.load_state_dict(global_parameters)
@@ -200,12 +192,12 @@ for net in local_models:
     
 cluster_model_vectors = {}
 for round in range(cfg["comm_round"]):
-    party_list_this_round = party_list_rounds[round]
+    party_list_this_round = party_list_rounds[round]  #all in
     nets_this_round = {k: local_models[k] for k in party_list_this_round}
     teachers_this_round = {k: local_models_teacher[k] for k in party_list_this_round}
 
     for key,teacher in teachers_this_round.items():
-        teachers_this_round[key].load_state_dict(global_parameters_teacher)
+        teachers_this_round[key].load_state_dict(global_parameters_teacher)    #each teacher load global model
     distributions_this_round={k:data_distributions[k] for k in party_list_this_round}
     nets_param_start = {k: copy.deepcopy(local_models[k]) for k in party_list_this_round}
     teachers_param_start = {k: copy.deepcopy(local_models_teacher[k]) for k in party_list_this_round}
@@ -214,7 +206,7 @@ for round in range(cfg["comm_round"]):
     total_data_points = sum([len(net_dataidx_map[k]) for k in party_list_this_round])
     fed_avg_freqs = {k: len(net_dataidx_map[k]) / total_data_points for k in party_list_this_round}
 
-    manipulate_gradient(args, None, nets_this_round, benign_client_list, nets_param_start)
+    manipulate_gradient(args, None, nets_this_round, benign_client_list, nets_param_start)  #attack
     manipulate_gradient(args, None, teachers_this_round, benign_client_list, teachers_param_start)
 
     graph_matrix = update_graph_matrix_neighbor_distribution(graph_matrix, nets_this_round, distributions_this_round, global_parameters, dw, fed_avg_freqs, args.alpha1, args.alpha2,args.T,args.difference_measure)   # Graph Matrix is not normalized yet
