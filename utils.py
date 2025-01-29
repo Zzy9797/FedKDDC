@@ -3,11 +3,11 @@ import numpy as np
 import copy
 import cvxpy as cp
     
-def compute_local_test_accuracy(model, dataloader, data_distribution):  #accuracy
+def compute_local_test_accuracy(model, dataloader, data_distribution):  #compute accuracy
 
     model.eval()
 
-    toatl_label_num = np.zeros(len(data_distribution))
+    toatl_label_num = np.zeros(len(data_distribution))  #initilization
     correct_label_num = np.zeros(len(data_distribution))
     model.cuda()
     generalized_total, generalized_correct = 0, 0
