@@ -1,4 +1,4 @@
-#The datasets of the computer vision
+#The datasets of the task of the computer vision
 import torch.utils.data as data
 from PIL import Image
 import numpy as np
