@@ -3,7 +3,7 @@ import numpy as np
 import copy
 import cvxpy as cp
     
-def compute_local_test_accuracy(model, dataloader, data_distribution):  #compute accuracy
+def compute_local_test_accuracy(model, dataloader, data_distribution):  #compute accuracy, we use personalized accuracy
 
     model.eval()
 
@@ -55,17 +55,15 @@ def cal_model_cosine_difference(nets_this_round, initial_global_parameters, dw, 
     # print("model_similarity_matrix" ,model_similarity_matrix)
     return model_similarity_matrix
 
+#compute the aggregation weights of this round
 def update_graph_matrix_neighbor_distribution(graph_matrix, nets_this_round, distributions_this_round,initial_global_parameters, dw, fed_avg_freqs, alpha1, alpha2,temperature,similarity_matric):
-    # index_clientid = torch.tensor(list(map(int, list(nets_this_round.keys()))))     # for example, client 'index_clientid[0]'s model difference vector is model_difference_matrix[0] 
     index_clientid = list(nets_this_round.keys())
-    # model_difference_matrix = cal_model_difference(index_clientid, nets_this_round, nets_param_start, difference_measure)
     model_difference_matrix = cal_model_cosine_difference(nets_this_round, initial_global_parameters, dw, similarity_matric)
     graph_matrix = optimizing_graph_matrix_neighbor_distribution(graph_matrix, index_clientid, distributions_this_round,model_difference_matrix, alpha1, alpha2,temperature,fed_avg_freqs)
-    # print(f'Model difference: {model_difference_matrix[0]}')
     # print(f'Graph matrix: {graph_matrix}')
     return graph_matrix
 
-
+#optimize the objective to get the aggregation weights
 def optimizing_graph_matrix_neighbor_distribution(graph_matrix, index_clientid, distributions_this_round, model_difference_matrix, alpha1,alpha2, temperature,fed_avg_freqs):
     n = model_difference_matrix.shape[0]
     p = np.array(list(fed_avg_freqs.values()))
@@ -178,7 +176,7 @@ def compute_acc(net, test_data_loader):   #accuracy
     net.to('cpu')
     return correct / float(total)
 
-def compute_loss(net, test_data_loader):
+def compute_loss(net, test_data_loader): #loss
     net.eval()
     loss, total = 0, 0
     net.cuda()
