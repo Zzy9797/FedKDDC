@@ -16,8 +16,8 @@ from prepare_data import get_dataloader
 from attack import *
 import torch.nn.functional as F
 
-
-def local_train_pfedgraph(args, round, nets_this_round,teachers_this_round, cluster_models, train_local_dls, val_local_dls, test_dl, data_distributions, best_val_acc_list, best_test_acc_list, benign_client_list):
+#local training of FedKDDC, including the training of the personalized models and the global models
+def local_train_FedKDDC(args, round, nets_this_round,teachers_this_round, cluster_models, train_local_dls, val_local_dls, test_dl, data_distributions, best_val_acc_list, best_test_acc_list, benign_client_list):
         
     print('training student')   #train personalized models
     for net_id, net in nets_this_round.items():   #each local training
@@ -201,7 +201,7 @@ for round in range(cfg["comm_round"]):
     distributions_this_round={k:data_distributions[k] for k in party_list_this_round}
     nets_param_start = {k: copy.deepcopy(local_models[k]) for k in party_list_this_round}
     teachers_param_start = {k: copy.deepcopy(local_models_teacher[k]) for k in party_list_this_round}
-    mean_personalized_acc = local_train_pfedgraph(args, round, nets_this_round, teachers_this_round,cluster_model_vectors, train_local_dls, val_local_dls, test_dl, data_distributions, best_val_acc_list, best_test_acc_list, benign_client_list)
+    mean_personalized_acc = local_train_FedKDDC(args, round, nets_this_round, teachers_this_round,cluster_model_vectors, train_local_dls, val_local_dls, test_dl, data_distributions, best_val_acc_list, best_test_acc_list, benign_client_list)
    
     total_data_points = sum([len(net_dataidx_map[k]) for k in party_list_this_round])
     fed_avg_freqs = {k: len(net_dataidx_map[k]) / total_data_points for k in party_list_this_round}
