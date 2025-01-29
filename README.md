@@ -8,6 +8,8 @@ Knowledge-Distillation based Personalized Federated Learning with Distribution C
 - test.py: evalution indicators
 - prepare_data.py、data_partition、cvdataset.py、nlpdataset.py：get loaders
 - attacks.py: attack functions
+- config.py: configurations
+- model.py: backbones
   
 ## Experiments
 Our experiments are implemented with open-source PyTorch 1.13.1, on an NVIDIA GeForce RTX 4090 platform. 
