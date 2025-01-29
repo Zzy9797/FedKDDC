@@ -204,9 +204,9 @@ for round in range(cfg["comm_round"]):
     mean_personalized_acc = local_train_FedKDDC(args, round, nets_this_round, teachers_this_round,cluster_model_vectors, train_local_dls, val_local_dls, test_dl, data_distributions, best_val_acc_list, best_test_acc_list, benign_client_list)
    
     total_data_points = sum([len(net_dataidx_map[k]) for k in party_list_this_round])
-    fed_avg_freqs = {k: len(net_dataidx_map[k]) / total_data_points for k in party_list_this_round}
+    fed_avg_freqs = {k: len(net_dataidx_map[k]) / total_data_points for k in party_list_this_round}   #compute normal aggregation weights
 
-    #attack is not perform if all the clients are be benign clients
+    #attack is not performed if all the clients are be benign clients
     manipulate_gradient(args, None, nets_this_round, benign_client_list, nets_param_start)  #attack student model
     manipulate_gradient(args, None, teachers_this_round, benign_client_list, teachers_param_start)  #attack teacher model
 
