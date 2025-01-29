@@ -9,8 +9,8 @@ Dirichlet distribution is a typical data splitting principle in FL, which effect
 
 Table 1: Accuracy (%) comparisons of image classification task on CIFAR-10, CIFAR-100, SVHN, and Fashion-MNIST under data partitioning of Dirichlet distribution. 
 
- <span style="white-space:nowrap;">Method&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> |<span style="white-space:nowrap;">CIFAR-10&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>  |<span style="white-space:nowrap;">CIFAR-100&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>  |<span style="white-space:nowrap;">SVHN&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> |<span style="white-space:nowrap;">Fashion-MNIST&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
-  ：---： | --- | --- | ---| ---
+ <span style="white-space:nowrap;">Method&emsp;&emsp;&emsp;&emsp;&emsp;</span> |<span style="white-space:nowrap;">CIFAR-10&emsp;&emsp;&emsp;&emsp;&emsp;</span>  |<span style="white-space:nowrap;">CIFAR-100&emsp;&emsp;&emsp;&emsp;&emsp;</span>  |<span style="white-space:nowrap;">SVHN&emsp;&emsp;&emsp;&emsp;&emsp;</span> |<span style="white-space:nowrap;">Fashion-MNIST&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+  --- | --- | --- | ---| ---
  FedAvg  | 62.92 | 27.78 | 85.86 | 84.51
  FedAvg-FT  | 84.09 | 50.58 | 90.11 | 96.33
  FedProx  | 62.25 | 27.87 | 85.98 | 82.79
