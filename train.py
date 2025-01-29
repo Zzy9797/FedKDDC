@@ -210,9 +210,9 @@ for round in range(cfg["comm_round"]):
     manipulate_gradient(args, None, teachers_this_round, benign_client_list, teachers_param_start)  #attack teacher model
 
     graph_matrix = update_graph_matrix_neighbor_distribution(graph_matrix, nets_this_round, distributions_this_round, global_parameters, dw, fed_avg_freqs, args.alpha1, args.alpha2,args.T,args.difference_measure)   # Graph Matrix is not normalized yet
-    cluster_model_vectors = aggregation_by_graph(cfg, graph_matrix, nets_this_round, global_parameters)             #aggregate personalized models                                       # Aggregation weight is normalized here
+    cluster_model_vectors = aggregation_by_graph(cfg, graph_matrix, nets_this_round, global_parameters)             #aggregate personalized models and load state dict for the local models                                   # Aggregation weight is normalized here
 
-    aggregated_teacher=normal_aggregation(cfg, teachers_this_round, fed_avg_freqs,global_parameters)   #aggregate global models
+    aggregated_teacher=normal_aggregation(cfg, teachers_this_round, fed_avg_freqs,global_parameters)   #aggregate global models and load state dict for the client global model
 
     global_model_teacher.load_state_dict(aggregated_teacher)
     global_parameters_teacher = global_model_teacher.state_dict()
