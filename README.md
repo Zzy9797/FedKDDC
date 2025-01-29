@@ -12,44 +12,23 @@ Table 1: Accuracy (%) comparisons of image classification task on CIFAR-10, CIFA
  <span style="white-space:nowrap;">Method&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> |<span style="white-space:nowrap;">CIFAR-10&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>  |<span style="white-space:nowrap;">CIFAR-100&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>  |<span style="white-space:nowrap;">SVHN&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> |<span style="white-space:nowrap;">Fashion-MNIST&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
   --- | --- | --- | ---| ---
  FedAvg  | 62.92 | 27.78 | 85.86 | 84.51
- FedAvg-FT  | 84.09 | 50.58 
- FedProx  | 62.25 | 27.87 
- FedProx-FT  | 83.71 | 50.99 
- CFL  | 83.84 | 49.12 
- Per-FedAvg  | 84.02 | 50.38
- pFedMe  | 75.24 | 34.37
- FedAMP  | 75.49 | 31.04
- Ditto  | 83.78 | 50.33
- FedRep  | 83.47 | 50.15
- pFedHN  | 82.57 | 49.08
- FedRep  | 83.47 | 50.15
- FedRoD  | 83.49 | 47.96
- kNN-Per  | 70.05 | 25.84
- pFedGraph  | 84.28 | 51.63
- FedKDDC  | **85.69**±0.04 | **54.33**±0.22
+ FedAvg-FT  | 84.09 | 50.58 | 90.11 | 96.33
+ FedProx  | 62.25 | 27.87 | 85.98 | 82.79
+ FedProx-FT  | 83.71 | 50.99 | 89.26 | 96.27 
+ CFL  | 83.84 | 49.12 | 89.53 | 96.64
+ Per-FedAvg  | 84.02 | 50.38 | 89.82 | 96.30
+ pFedMe  | 75.24 | 34.37 | 82.59 | 93.34
+ FedAMP  | 75.49 | 31.04 | 67.62 | 93.13
+ Ditto  | 83.78 | 50.33 | 90.13 | 95.97
+ FedRep  | 83.47 | 50.15 | 89.32 | 96.44
+ pFedHN  | 82.57 | 49.08 | 78.44 | 95.87
+ FedRoD  | 83.49 | 47.96 | 89.13 | 96.46
+ kNN-Per  | 70.05 | 25.84 | 96.21 | 91.87
+ pFedGraph  | 84.28 | 51.63 | 89.59 | 96.46
+ FedKDDC  | **85.69**±0.04 | **54.33**±0.22 | **90.66**±0.15 | **96.57**±0.05
 
 
-Table 2: Accuracy (%) comparisons of image classification task on SVHN and Fashion-MNIST under data partitioning of Dirichlet distribution. 
-<span style="white-space:nowrap;">Method&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> |<span style="white-space:nowrap;">SVHN&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>  |<span style="white-space:nowrap;">Fashion-MNIST&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>  
-| --- | --- | --- |
-| FedAvg | 85.86 | 84.51 |
-| FedAvg-FT | 90.11 | 96.33 |
-| FedProx | 85.98 | 82.79 |
-| FedProx-FT | 89.26 | 96.27 |
-| CFL | 89.53 | 96.64 |
-| Per-FedAvg | 89.82 | 96.30 |
-| pFedMe | 82.59 | 93.34 |
-| FedAMP | 67.62 | 93.13 |
-| Ditto | 90.13 | 95.97 |
-| FedRep | 89.32 | 96.44 |
-| pFedHN | 78.44 | 95.87 |
-| FedRoD | 89.13 | 96.46 |
-| kNN-Per | 86.21 | 91.87 |
-| pFedGraph | 89.59 | 96.46 |
-| FedKDDC | **90.66**±0.15 | **96.57**±0.05 |
-
-
-Table 3: Accuracy (%) comparisons of text classification task on the dataset Yahoo! Answers under data partitioning of Dirichlet distribution.
+Table 2: Accuracy (%) comparisons of text classification task on the dataset Yahoo! Answers under data partitioning of Dirichlet distribution.
 <span style="white-space:nowrap;">Method&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> | <span style="white-space:nowrap;">Accuracy&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> | <span style="white-space:nowrap;">Method&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> | <span style="white-space:nowrap;">Accuracy&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
 | --- | --- | --- | --- |
 FedAvg | 51.99 | FedAMP | 64.26
@@ -63,7 +42,7 @@ pFedMe | 58.91 | |
 **Results of Pathological distribution distribution**:
 Consider the scenario where some categories of data are missing on the clients, we also split the datasets based on pathological distribution and conduct the experiments.
 
-Table 4: Accuracy (%) comparisons of image classification task on CIFAR-10 and CIFAR-100 under data partitioning of pathological distribution.
+Table 3: Accuracy (%) comparisons of image classification task on CIFAR-10 and CIFAR-100 under data partitioning of pathological distribution.
  <span style="white-space:nowrap;">Method&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> |<span style="white-space:nowrap;">CIFAR-10&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>  |<span style="white-space:nowrap;">CIFAR-100&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>  
 | ---- | ----- | ------  
 | FedAvg | 66.19 | 26.23 
@@ -82,7 +61,7 @@ Table 4: Accuracy (%) comparisons of image classification task on CIFAR-10 and C
 | pFedGraph | 92.74 | 56.79 
 | FedKDDC | **92.84**±0.09 | **58.82**±0.12
 
-Table 5: Accuracy (%) comparisons of text classification task on the dataset Yahoo! Answers under data partitioning of pathological distribution.
+Table 4: Accuracy (%) comparisons of text classification task on the dataset Yahoo! Answers under data partitioning of pathological distribution.
 <span style="white-space:nowrap;">Method&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> | <span style="white-space:nowrap;">Accuracy&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> | <span style="white-space:nowrap;">Method&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> | <span style="white-space:nowrap;">Accuracy&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
 | --- | --- | --- | --- |
 FedAvg | 63.14 | FedAMP | 76.85 
@@ -96,7 +75,7 @@ pFedMe | 64.16 | |
 **Results of homogeneous data partition**:
 When data is homogeneous, excessive personalization can sometimes affect model performance. To validate the effectiveness of proposed FedKDDC under data homogeneity, we conduct the experiments on CIFAR-10 and CIFAR-100 under independent and identically distributed data partition.
 
-Table 6: Accuracy (%) comparisons of image classification task on the datasets CIFAR-10 and CIFAR-100 under homogeneous data partitioning.
+Table 5: Accuracy (%) comparisons of image classification task on the datasets CIFAR-10 and CIFAR-100 under homogeneous data partitioning.
  <span style="white-space:nowrap;">Method&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> |<span style="white-space:nowrap;">CIFAR-10&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>  |<span style="white-space:nowrap;">CIFAR-100&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>  
  ---- | ----- | ------  
 FedAvg | 67.12 | 31.10 
