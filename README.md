@@ -6,7 +6,7 @@ Knowledge-Distillation based Personalized Federated Learning with Distribution C
 - train.py: Main code of the algorithm
 - utils.py: Some utilities of the algorithm
 - test.py: Evalution indicators
-- prepare_data.py、data_partition、cvdataset.py、nlpdataset.py：Get loaders
+- prepare_data.py、data_partition、cvdataset.py、nlpdataset.py：Get the data loaders
 - attack.py: Attack functions
 - config.py: Configurations
 - model.py: Backbones
