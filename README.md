@@ -1,6 +1,12 @@
 # FedKDDC
 Knowledge-Distillation based Personalized Federated Learning with Distribution Constraints
 
+## Code Descriptions
+- run.sh: Quick strat
+- train.py: Main code of the algorithm
+- utils.py: Some functions of the algorithm
+- torchsampler
+  
 ## Experiments
 Our experiments are implemented with open-source PyTorch 1.13.1, on an NVIDIA GeForce RTX 4090 platform. 
 
@@ -39,7 +45,7 @@ CFL | 79.40 | pFedGraph | 80.56
 Per-FedAvg | 80.16 | FedKDDC | **85.50**±0.09
 pFedMe | 58.91 | | 
 
-**Results of Pathological distribution distribution**:
+**Results of Pathological Distribution**:
 Consider the scenario where some categories of data are missing on the clients, we also split the datasets based on pathological distribution and conduct the experiments.
 
 Table 3: Accuracy (%) comparisons of image classification task on CIFAR-10 and CIFAR-100 under data partitioning of pathological distribution.
@@ -72,7 +78,7 @@ CFL | 88.61 | pFedGraph | 89.04
 Per-FedAvg | 86.92 | FedKDDC | **92.16**±0.15 
 pFedMe | 64.16 | | 
 
-**Results of homogeneous data partition**:
+**Results of Homogeneous Data Partition**:
 When data is homogeneous, excessive personalization can sometimes affect model performance. To validate the effectiveness of proposed FedKDDC under data homogeneity, we conduct the experiments on CIFAR-10 and CIFAR-100 under independent and identically distributed data partition.
 
 Table 5: Accuracy (%) comparisons of image classification task on the datasets CIFAR-10 and CIFAR-100 under homogeneous data partitioning.
