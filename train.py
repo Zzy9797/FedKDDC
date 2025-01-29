@@ -45,9 +45,7 @@ def local_train_FedKDDC(args, round, nets_this_round,teachers_this_round, cluste
             optimizer = optim.SGD(filter(lambda p: p.requires_grad, net.parameters()), lr=args.lr, momentum=0.9, weight_decay=args.reg)
         criterion = torch.nn.CrossEntropyLoss()
         kl=nn.KLDivLoss(reduction="batchmean").cuda()
-        if round > 0:
-            cluster_model = cluster_models[net_id].cuda()
-        
+
         net.cuda()
         net.train()
         teacher.cuda()
@@ -166,7 +164,7 @@ elif args.dataset == 'svhn':
 elif args.dataset == 'yahoo_answers':
     model = textcnn       
                   
-    
+#initilization of the models    
 global_model = model(cfg['classes_size'])
 global_parameters = global_model.state_dict()  
 global_model_teacher = model(cfg['classes_size'])
@@ -175,7 +173,7 @@ local_models = []
 local_models_teacher = []
 best_val_acc_list, best_test_acc_list = [],[]
 dw = []
-for i in range(cfg['client_num']):    #initilization 
+for i in range(cfg['client_num']):    #initilization of the local models and the accuracy
     local_models.append(model(cfg['classes_size']))
     local_models_teacher.append(model(cfg['classes_size']))
     dw.append({key : torch.zeros_like(value) for key, value in local_models[i].named_parameters()})
