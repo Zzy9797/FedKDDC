@@ -2,14 +2,14 @@
 Knowledge-Distillation based Personalized Federated Learning with Distribution Constraints
 
 ## Code Descriptions
-- run.sh: quick strat
-- train.py: main code of the algorithm
-- utils.py: some utilities of the algorithm
-- test.py: evalution indicators
-- prepare_data.py、data_partition、cvdataset.py、nlpdataset.py：get loaders
-- attack.py: attack functions
-- config.py: configurations
-- model.py: backbones
+- run.sh: Quick strat
+- train.py: Main code of the algorithm
+- utils.py: Some utilities of the algorithm
+- test.py: Evalution indicators
+- prepare_data.py、data_partition、cvdataset.py、nlpdataset.py：Get loaders
+- attack.py: Attack functions
+- config.py: Configurations
+- model.py: Backbones
   
 ## Experiments
 Our experiments are implemented with open-source PyTorch 1.13.1, on an NVIDIA GeForce RTX 4090 platform. 
