@@ -206,11 +206,12 @@ for round in range(cfg["comm_round"]):
     total_data_points = sum([len(net_dataidx_map[k]) for k in party_list_this_round])
     fed_avg_freqs = {k: len(net_dataidx_map[k]) / total_data_points for k in party_list_this_round}
 
+    #attack is not perform if all the clients are be benign clients
     manipulate_gradient(args, None, nets_this_round, benign_client_list, nets_param_start)  #attack student model
     manipulate_gradient(args, None, teachers_this_round, benign_client_list, teachers_param_start)  #attack teacher model
 
-    graph_matrix = update_graph_matrix_neighbor_distribution(graph_matrix, nets_this_round, distributions_this_round, global_parameters, dw, fed_avg_freqs, args.alpha1, args.alpha2,args.T,args.difference_measure)   # Graph Matrix is not normalized yet
-    cluster_model_vectors = aggregation_by_graph(cfg, graph_matrix, nets_this_round, global_parameters)             #aggregate personalized models and load state dict for the local models                                   # Aggregation weight is normalized here
+    graph_matrix = update_graph_matrix_neighbor_distribution(graph_matrix, nets_this_round, distributions_this_round, global_parameters, dw, fed_avg_freqs, args.alpha1, args.alpha2,args.T,args.difference_measure)   #compute the aggregation weights
+    cluster_model_vectors = aggregation_by_graph(cfg, graph_matrix, nets_this_round, global_parameters)             #aggregate personalized models and load state dict for the local models                                 
 
     aggregated_teacher=normal_aggregation(cfg, teachers_this_round, fed_avg_freqs,global_parameters)   #aggregate global models and load state dict for the client global model
 
