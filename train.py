@@ -1,3 +1,4 @@
+#main training file
 import copy
 import math
 import random
@@ -26,7 +27,7 @@ def local_train_FedKDDC(args, round, nets_this_round,teachers_this_round, cluste
         train_local_dl = train_local_dls[net_id]
         data_distribution = data_distributions[net_id]
 
-        if net_id in benign_client_list:
+        if net_id in benign_client_list:   #first test
             val_acc = compute_acc(net, val_local_dls[net_id])
             personalized_test_acc, generalized_test_acc = compute_local_test_accuracy(net, test_dl, data_distribution)  
 
@@ -66,8 +67,9 @@ def local_train_FedKDDC(args, round, nets_this_round,teachers_this_round, cluste
             target = target.long()
 
             out = net(x)
+
             if round>0:
-                loss = criterion(out, target)+args.alpha3*kl(F.log_softmax(out, dim=1),F.softmax(teacher_out, dim=1))
+                loss = criterion(out, target)+args.alpha3*kl(F.log_softmax(out, dim=1),F.softmax(teacher_out, dim=1)) #distillation
             else:
                 loss = criterion(out,target)
         
@@ -75,7 +77,7 @@ def local_train_FedKDDC(args, round, nets_this_round,teachers_this_round, cluste
             loss.backward()
             optimizer.step()
         
-        if net_id in benign_client_list:    #test
+        if net_id in benign_client_list:    #second test
             val_acc = compute_acc(net, val_local_dls[net_id])
             personalized_test_acc, generalized_test_acc = compute_local_test_accuracy(net, test_dl, data_distribution)
 
@@ -204,8 +206,8 @@ for round in range(cfg["comm_round"]):
     total_data_points = sum([len(net_dataidx_map[k]) for k in party_list_this_round])
     fed_avg_freqs = {k: len(net_dataidx_map[k]) / total_data_points for k in party_list_this_round}
 
-    manipulate_gradient(args, None, nets_this_round, benign_client_list, nets_param_start)  #attack
-    manipulate_gradient(args, None, teachers_this_round, benign_client_list, teachers_param_start)
+    manipulate_gradient(args, None, nets_this_round, benign_client_list, nets_param_start)  #attack student model
+    manipulate_gradient(args, None, teachers_this_round, benign_client_list, teachers_param_start)  #attack teacher model
 
     graph_matrix = update_graph_matrix_neighbor_distribution(graph_matrix, nets_this_round, distributions_this_round, global_parameters, dw, fed_avg_freqs, args.alpha1, args.alpha2,args.T,args.difference_measure)   # Graph Matrix is not normalized yet
     cluster_model_vectors = aggregation_by_graph(cfg, graph_matrix, nets_this_round, global_parameters)             #aggregate personalized models                                       # Aggregation weight is normalized here
