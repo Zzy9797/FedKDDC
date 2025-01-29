@@ -7,11 +7,11 @@ Our experiments are implemented with open-source PyTorch 1.13.1, on an NVIDIA Ge
 **Results of Dirichlet Distribution**: 
 Dirichlet distribution is a typical data splitting principle in FL, which effectively mimics the heterogeneity of data in real applications. We conduct the experiments under Dirichlet distribution data partition to compare the performance among the state-of-the-arts methods.
 
-Table 1: Accuracy (%) comparisons of image classification task on CIFAR-10 and CIFAR-100 under data partitioning of Dirichlet distribution. 
+Table 1: Accuracy (%) comparisons of image classification task on CIFAR-10, CIFAR-100, SVHN, and Fashion-MNIST under data partitioning of Dirichlet distribution. 
 
  <span style="white-space:nowrap;">Method&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span> |<span style="white-space:nowrap;">CIFAR-10&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>  |<span style="white-space:nowrap;">CIFAR-100&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>  
-  --- | --- | ---
- FedAvg  | 62.92 | 27.78 
+  --- | --- | --- | ---| ---
+ FedAvg  | 62.92 | 27.78 | 85.86 | 84.51
  FedAvg-FT  | 84.09 | 50.58 
  FedProx  | 62.25 | 27.87 
  FedProx-FT  | 83.71 | 50.99 
