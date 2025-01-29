@@ -2,10 +2,11 @@
 Knowledge-Distillation based Personalized Federated Learning with Distribution Constraints
 
 ## Code Descriptions
-- run.sh: Quick strat
-- train.py: Main code of the algorithm
-- utils.py: Some functions of the algorithm
-- torchsampler
+- run.sh: quick strat
+- train.py: main code of the algorithm
+- utils.py: some utilities of the algorithm
+- test.py: evalution indicators
+- prepare_data.py、cvdataset.py、nlp_dataset.py
   
 ## Experiments
 Our experiments are implemented with open-source PyTorch 1.13.1, on an NVIDIA GeForce RTX 4090 platform. 
