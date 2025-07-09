@@ -12,7 +12,7 @@ Knowledge-Distillation based Personalized Federated Learning with Distribution C
 - model.py: Backbones
   
 ## Experiments
-Our experiments are implemented with open-source PyTorch 1.13.1, on an NVIDIA GeForce RTX 4090 platform. 
+Our experiments are implemented with open-source PyTorch 1.13.1, on an NVIDIA GeForce RTX 4090 platform. When available, the experimental results of the baselines are cited directly from pFedGraph. To more precisely illustrate the performance gains achieved by FedKDDC, we reproduce the compared methods exhibiting performance comparable to ours with default settings and report their results along with standard deviations.
 
 **Results of Dirichlet Distribution**: 
 Dirichlet distribution is a typical data splitting principle in FL, which effectively mimics the heterogeneity of data in real applications. We conduct the experiments under Dirichlet distribution data partition to compare the performance among the state-of-the-arts methods.
@@ -22,19 +22,19 @@ Table 1: Accuracy (%) comparisons of image classification task on CIFAR-10, CIFA
  <span style="white-space:nowrap;">Method&emsp;&emsp;&emsp;</span> |<span style="white-space:nowrap;">CIFAR-10&emsp;&emsp;&emsp;</span>  |<span style="white-space:nowrap;">CIFAR-100&emsp;&emsp;&emsp;</span>  |<span style="white-space:nowrap;">SVHN&emsp;&emsp;&emsp;</span> |<span style="white-space:nowrap;">Fashion-MNIST&emsp;&emsp;&emsp;</span>
   --- | --- | --- | ---| ---
  FedAvg  | 62.92 | 27.78 | 85.86 | 84.51
- FedAvg-FT  | 84.09 | 50.58 | 90.11 | 96.33
+ FedAvg-FT  | 84.09 | 50.58 | 90.11 | 96.33±0.03
  FedProx  | 62.25 | 27.87 | 85.98 | 82.79
- FedProx-FT  | 83.71 | 50.99 | 89.26 | 96.27 
- CFL  | 83.84 | 49.12 | 89.53 | 96.64
- Per-FedAvg  | 84.02 | 50.38 | 89.82 | 96.30
+ FedProx-FT  | 83.71 | 50.99 | 89.26 | 96.28±0.04 
+ CFL  | 83.84 | 49.12 | 89.53 | 96.41±0.18
+ Per-FedAvg  | 84.02 | 50.38 | 89.82 | 96.29±0.06
  pFedMe  | 75.24 | 34.37 | 82.59 | 93.34
  FedAMP  | 75.49 | 31.04 | 67.62 | 93.13
  Ditto  | 83.78 | 50.33 | 90.13 | 95.97
- FedRep  | 83.47 | 50.15 | 89.32 | 96.44
+ FedRep  | 83.47 | 50.15 | 89.32 | 96.40±0.05
  pFedHN  | 82.57 | 49.08 | 78.44 | 95.87
- FedRoD  | 83.49 | 47.96 | 89.13 | 96.46
+ FedRoD  | 83.49 | 47.96 | 89.13 | 96.40±0.08
  kNN-Per  | 70.05 | 25.84 | 96.21 | 91.87
- pFedGraph  | 84.28 | 51.63 | 89.59 | 96.46
+ pFedGraph  | 84.28 | 51.63 | 89.59 | 96.46±0.07
  FedKDDC  | **85.69**±0.04 | **54.33**±0.22 | **90.66**±0.15 | **96.57**±0.05
 
 
@@ -68,7 +68,7 @@ Table 3: Accuracy (%) comparisons of image classification task on CIFAR-10 and C
 | pFedHN | 89.91 | 49.06 
 | FedRoD | 90.66 |  49.91 
 | kNN-Per | 79.09 | 24.70 
-| pFedGraph | 92.74 | 56.79 
+| pFedGraph | 92.45±0.13 | 56.79 
 | FedKDDC | **92.84**±0.09 | **58.82**±0.12
 
 Table 4: Accuracy (%) comparisons of text classification task on the dataset Yahoo! Answers under data partitioning of pathological distribution.
@@ -101,7 +101,7 @@ FedRep | 62.88 | 21.53
 pFedHN | 62.78 | 25.94 
 FedRoD | 62.07 |  18.71 
 kNN-Per | 67.01 | 31.04 
-pFedGraph | 67.37 | 31.16 
+pFedGraph | 66.80±0.06 | 31.16 
 FedKDDC | **67.55**±0.09 | **33.65**±0.10 
 
 ## Acknowledgments
